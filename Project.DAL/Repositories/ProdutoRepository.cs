@@ -1,8 +1,10 @@
-﻿using Project.DAL.Contracts;
+﻿using Dapper;
+using Project.DAL.Contracts;
 using Project.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,32 +20,57 @@ namespace Project.DAL.Repositories
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            string query = "Delete from Produto where IdProduto = @IdProduto";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(query, new { IdEstoque = id });
+            }
         }
 
         public void Insert(Produto obj)
         {
-            throw new NotImplementedException();
+            string query = "insert into Produto(Nome, Preco, Quantidade) values(@Nome, @Preco, @Quantidade)";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(query, obj);
+            }
         }
 
         public List<Produto> SelectAll()
         {
-            throw new NotImplementedException();
+            string query = "Select * From Produto";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<Produto>(query).ToList();
+            }
         }
 
         public Produto SelectById(int id)
         {
-            throw new NotImplementedException();
+            string query = "Select * From Produto where IdProduto = @IdProduto";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingleOrDefault<Produto>(query, new { IdProduto = id });
+
+            }
         }
 
         public void Update(Produto obj)
         {
-            throw new NotImplementedException();
+            string query = "Update Produto set Nome = @Nome, Preco = @Preco, Quantidade = @Quantidade where IdEstoque = @IdEstoque";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(query, obj);
+            }
         }
 
         public List<Produto> SelectByPriceRange(decimal precoMinimo, decimal precoMaximo)
         {
-            throw new NotImplementedException();
+            string query = "Select * From Produto where Preco BETWEEN " + precoMinimo + " AND " + precoMaximo;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<Produto>(query).ToList();
+            }
         }
     }
 }

@@ -20,7 +20,11 @@ namespace Project.DAL.Repositories
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            string query = "Delete from Estoque where IdEstoque = @IdEstoque";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(query, new { IdEstoque = id });
+            }
         }
 
         public void Insert(Estoque obj)
@@ -34,17 +38,30 @@ namespace Project.DAL.Repositories
 
         public List<Estoque> SelectAll()
         {
-            throw new NotImplementedException();
+            string query = "Select * From Estoque";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<Estoque>(query).ToList();
+            }
         }
 
         public Estoque SelectById(int id)
         {
-            throw new NotImplementedException();
+            string query = "Select * From Estoque where IdEstoque = @IdEstoque";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingleOrDefault<Estoque>(query, new {IdEstoque = id});
+          
+            }
         }
 
         public void Update(Estoque obj)
         {
-            throw new NotImplementedException();
+            string query = "Update Estoque set Nome = @Nome where IdEstoque = @IdEstoque";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(query, obj);
+            }
         }
     }
 }
