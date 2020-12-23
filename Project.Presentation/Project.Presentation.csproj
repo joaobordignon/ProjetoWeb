@@ -238,6 +238,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Project.DAL\Project.DAL.csproj">
+      <Project>{cb1c30ff-f20e-474a-bd33-d78c89bca199}</Project>
+      <Name>Project.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Image\" />
   </ItemGroup>
