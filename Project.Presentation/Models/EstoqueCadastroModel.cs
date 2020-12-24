@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Project.Presentation.Models
 {
-    public class Estoque
+    public class EstoqueCadastroModel
     {
-        public int IdEstoque { get; set; }
+        [Required(ErrorMessage = "Campo obrigatorio")]
         public string Nome { get; set; }
-        //Relacionamento de Associação
-        public List<Produto> Produtos { get; set; }
-
-
     }
 }

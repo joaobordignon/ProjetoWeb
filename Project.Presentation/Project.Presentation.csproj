@@ -205,11 +205,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EstoqueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Estoque.cs" />
-    <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\EstoqueCadastroModel.cs" />
+    <Compile Include="Models\ProdutoCadastroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +231,7 @@
     <Content Include="Views\Estoque\Cadastro.cshtml" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
+    <Content Include="Views\Produto\Cadastro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

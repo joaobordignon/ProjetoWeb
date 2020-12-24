@@ -29,7 +29,7 @@ namespace Project.DAL.Repositories
 
         public void Insert(Produto obj)
         {
-            string query = "insert into Produto(Nome, Preco, Quantidade) values(@Nome, @Preco, @Quantidade)";
+            string query = "insert into Produto(Nome, Preco, Quantidade, IdEstoque) values(@Nome, @Preco, @Quantidade, @IdEstoque)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Execute(query, obj);
@@ -57,7 +57,7 @@ namespace Project.DAL.Repositories
 
         public void Update(Produto obj)
         {
-            string query = "Update Produto set Nome = @Nome, Preco = @Preco, Quantidade = @Quantidade where IdEstoque = @IdEstoque";
+            string query = "Update Produto set Nome = @Nome, Preco = @Preco, Quantidade = @Quantidade, IdEstoque = @IdEstoque Where IdProduto = @IdProduto";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Execute(query, obj);
