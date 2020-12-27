@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project.DAL.Entities;
+using Project.DAL.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace Project.Presentation.Models
 {
     public class ProdutoCadastroModel
     {
+        
         [Required(ErrorMessage = "Campo nome é obrigatório.")]
         public string Nome { get; set; }
         [Required(ErrorMessage = "Campo preço é obrigatório.")]
@@ -19,4 +22,5 @@ namespace Project.Presentation.Models
         public int IdEstoque { get; set; }
         public List<SelectListItem> Estoques { get; set; }
     }
+
 }
