@@ -11,11 +11,30 @@ namespace Project.Presentation.Controllers
 {
     public class ProdutoController : Controller
     {
+        private IEnumerable<SelectListItem> GetRoles()
+        {
+            var estoqueDiponivelDB = new EstoqueRepository();
+            var roles = estoqueDiponivelDB
+                        .SelectAll()
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.IdEstoque.ToString(),
+                                    Text = x.Nome
+                                });
+
+            return new SelectList(roles, "Value", "Text");
+        }
+
         // GET: Produto
         public ActionResult Cadastro()
         {
+            var model = new ProdutoCadastroModel
+            {
+                Estoques = GetRoles()
+            };
+            return View(model);
             
-            return View();
         }
         [HttpPost]
         public ActionResult Cadastro(ProdutoCadastroModel model)
@@ -31,7 +50,8 @@ namespace Project.Presentation.Controllers
                     produto.IdEstoque = model.IdEstoque;
                     var repo = new EstoqueRepository();
                     var estoqueDropbox = repo.SelectAll();
-                    model.Estoques = estoqueDropbox.ToList();
+                    
+
                     ProdutoRepository repository = new ProdutoRepository();
                     repository.Insert(produto);
                     
