@@ -43,15 +43,13 @@ namespace Project.Presentation.Controllers
             {
                 try
                 {
+                    model.Estoques = GetRoles();                                 
                     Produto produto = new Produto();
                     produto.Nome = model.Nome;
                     produto.Preco = model.Preco;
                     produto.Quantidade = model.Quantidade;
                     produto.IdEstoque = model.IdEstoque;
-                    var repo = new EstoqueRepository();
-                    var estoqueDropbox = repo.SelectAll();
                     
-
                     ProdutoRepository repository = new ProdutoRepository();
                     repository.Insert(produto);
                     
@@ -63,7 +61,7 @@ namespace Project.Presentation.Controllers
                     TempData["Mensagem"] = e.Message;
                 }
             }
-            return View();
+            return Cadastro();
         }
     }
 }
