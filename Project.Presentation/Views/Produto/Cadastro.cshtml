@@ -1,5 +1,5 @@
 ﻿@model Project.Presentation.Models.ProdutoCadastroModel
- 
+
 @{
     ViewBag.Title = "Cadastro";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -31,11 +31,10 @@
     <label>
         Escolha o Estoque
     </label>
-    @Html.DropDownListFor(model => model.IdEstoque, new SelectList(Model.Estoques, "Value", "Text"), "Escolha uma opcao",
-    new { @class = "form-control col-md-4" , id = "IdEstoque"})
-    <br />
-    <input type="submit" value="Cadastrar" class="btn btn-primary" />
-    <br />
-    <br />
-    <strong>@TempData["Mensagem"]</strong>
+    @Html.DropDownListFor(model => model.IdEstoque, Model.Estoques, "Escolha uma opcao", new { @class = "form-control col-md-4" })
+<br />
+<input type="submit" value="Cadastrar" class="btn btn-primary" />
+<br />
+<br />
+<strong>@TempData["Mensagem"]</strong>
 }

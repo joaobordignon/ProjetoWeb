@@ -19,6 +19,7 @@ namespace Project.Presentation.Models
         [Required(ErrorMessage = "Campo quantidade é obrigatório.")]
         public int Quantidade { get; set; }
         [Required(ErrorMessage = "Campo estoque é obrigatório.")]
+        [Display(Name ="Estoque")]
         public int IdEstoque { get; set; }
         public IEnumerable<SelectListItem> Estoques { get; set; }
     }
