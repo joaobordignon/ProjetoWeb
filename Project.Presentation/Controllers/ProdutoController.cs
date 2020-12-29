@@ -14,6 +14,7 @@ namespace Project.Presentation.Controllers
         // GET: Produto
         public ActionResult Cadastro()
         {
+            
             return View();
         }
         [HttpPost]
@@ -28,8 +29,12 @@ namespace Project.Presentation.Controllers
                     produto.Preco = model.Preco;
                     produto.Quantidade = model.Quantidade;
                     produto.IdEstoque = model.IdEstoque;
+                    var repo = new EstoqueRepository();
+                    var estoqueDropbox = repo.SelectAll();
+                    model.Estoques = estoqueDropbox.ToList();
                     ProdutoRepository repository = new ProdutoRepository();
                     repository.Insert(produto);
+                    
                     TempData["Mensagem"] = $"Produto {produto.Nome}, cadastrado com sucesso.";
                     ModelState.Clear();
                 }

@@ -31,8 +31,8 @@
     <label>
         Escolha o Estoque
     </label>
-   // @Html.DropDownListFor(model => model.IdEstoque, new SelectList(Estoque.SelectAll(), "Escolha uma opcao",
-   // new { @class = "form-control col-md-4" })
+    @Html.DropDownListFor(model => model.IdEstoque, new SelectList(Model.Estoques, "Value", "Text"), "Escolha uma opcao",
+    new { @class = "form-control col-md-4" , id = "IdEstoque"})
     <br />
     <input type="submit" value="Cadastrar" class="btn btn-primary" />
     <br />
