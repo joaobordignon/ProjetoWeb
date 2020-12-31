@@ -1,4 +1,5 @@
-﻿using Project.DAL.Entities;
+﻿using AutoMapper;
+using Project.DAL.Entities;
 using Project.DAL.Repositories;
 using Project.Presentation.Models;
 using System;
@@ -23,8 +24,7 @@ namespace Project.Presentation.Controllers
             {
                 try
                 {
-                    Estoque estoque = new Estoque();
-                    estoque.Nome = model.Nome;
+                    Estoque estoque = Mapper.Map<Estoque>(model);
                     EstoqueRepository repository = new EstoqueRepository();
                     repository.Insert(estoque);
                     TempData["Mensagem"] = $"Estoque {estoque.Nome}, cadastrado com sucesso.";
@@ -41,7 +41,20 @@ namespace Project.Presentation.Controllers
 
         public ActionResult Consulta()
         {
-            return View();
+            List<EstoqueConsultaModel> model = new List<EstoqueConsultaModel>();
+            try
+            {
+                EstoqueRepository repository = new EstoqueRepository();
+                
+                model = Mapper.Map<List<EstoqueConsultaModel>>(repository.SelectAll());
+
+                TempData["Mensagem"] = $"Quantidade de Registros: {model.Count}.";
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = e.Message;
+            }
+            return View(model);
         }
     }
 }
