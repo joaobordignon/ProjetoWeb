@@ -1,3 +1,5 @@
+using AutoMapper;
+using Project.Presentation.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace Project.Presentation
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Mapper.Initialize(m => { m.AddProfile<AutoMapperConfig>(); });
         }
     }
 }
