@@ -6,8 +6,8 @@
 
 <h2>Consulta Estoque</h2>
 
-<br />  
-<br />  
+<br />
+<br />
 <strong>@TempData["MensagemErro"]</strong>
 <div>
     <table class="table table-borderless table-striped table-hover">
@@ -27,15 +27,21 @@
                     <td>@u.Nome</td>
                     <td>
                         <a href="/Estoque/Edicao/@u.IdEstoque" class="btn btn-primary btn-sm">Atualizar</a>
-                        <a href="/Estoque/Delete/@u.IdEstoque" class="btn btn-danger btn-sm">Excluir</a>
+                        <a href="/Estoque/Delete/@u.IdEstoque" class="btn btn-danger btn-sm" >Excluir</a>
                     </td>
                 </tr>
             }
-        <tfoot><p>@TempData["Mensagem"]</p></tfoot>
-        </tbody>
 
+        </tbody>
+        <tfoot>
+           <tr>
+                <td>@TempData["Mensagem"]</td>
+           </tr>
+        </tfoot>
     </table>
-    
-    
+
+
 </div>
+
+
 
