@@ -48,13 +48,30 @@ namespace Project.Presentation.Controllers
                 
                 model = Mapper.Map<List<EstoqueConsultaModel>>(repository.SelectAll());
 
-                TempData["Mensagem"] = $"Quantidade de Registros: {model.Count}.";
+                
             }
             catch (Exception e)
             {
                 TempData["MensagemErro"] = e.Message;
             }
+            TempData["Mensagem"] = $"Quantidade de Registros: {model.Count}.";
             return View(model);
+        }
+        public ActionResult Delete(int id)
+        {
+            
+            try
+            {
+                EstoqueRepository repository = new EstoqueRepository();
+                repository.Delete(id);
+                
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = e.Message;
+            }
+            return View();
+            
         }
     }
 }

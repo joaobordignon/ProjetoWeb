@@ -215,6 +215,7 @@
     </Compile>
     <Compile Include="Models\EstoqueCadastroModel.cs" />
     <Compile Include="Models\EstoqueConsultaModel.cs" />
+    <Compile Include="Models\EstoqueDeleteModel.cs" />
     <Compile Include="Models\ProdutoCadastroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -238,6 +239,7 @@
     <Content Include="Scripts\jquery-3.5.1.min.map" />
     <Content Include="Views\Produto\Cadastro.cshtml" />
     <Content Include="Views\Estoque\Consulta.cshtml" />
+    <Content Include="Views\Estoque\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
