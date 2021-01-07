@@ -1,0 +1,25 @@
+﻿@model Project.Presentation.Models.EstoqueUpdateModel
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Alterar</h2>
+<h2>Cadastro de Estoque</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="text-danger">
+        @Html.ValidationSummary()
+    </div>
+    <label>
+        Atualize o nome do seu estoque
+    </label>
+    @Html.TextBoxFor(model => model.Nome, Model.Nome, new { @class = "form-control col-md-4" })
+    <br />
+    <input type="submit" value="Atualizar" class="btn btn-primary" />
+    <br />
+    <br />
+    <strong>@TempData["MensagemOk"]</strong>
+}
+
