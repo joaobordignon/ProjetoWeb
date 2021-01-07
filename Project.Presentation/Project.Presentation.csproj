@@ -216,6 +216,7 @@
     <Compile Include="Models\EstoqueCadastroModel.cs" />
     <Compile Include="Models\EstoqueConsultaModel.cs" />
     <Compile Include="Models\EstoqueDeleteModel.cs" />
+    <Compile Include="Models\EstoqueUpdateModel.cs" />
     <Compile Include="Models\ProdutoCadastroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -240,6 +241,7 @@
     <Content Include="Views\Produto\Cadastro.cshtml" />
     <Content Include="Views\Estoque\Consulta.cshtml" />
     <Content Include="Views\Estoque\Delete.cshtml" />
+    <Content Include="Views\Estoque\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

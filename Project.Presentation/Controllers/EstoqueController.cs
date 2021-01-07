@@ -27,7 +27,7 @@ namespace Project.Presentation.Controllers
                     Estoque estoque = Mapper.Map<Estoque>(model);
                     EstoqueRepository repository = new EstoqueRepository();
                     repository.Insert(estoque);
-                    TempData["Mensagem"] = $"Estoque {estoque.Nome}, cadastrado com sucesso.";
+                    TempData["MensagemOk"] = $"Estoque {estoque.Nome}, cadastrado com sucesso.";
                     ModelState.Clear();
                 }
                 catch (Exception e)
@@ -72,6 +72,49 @@ namespace Project.Presentation.Controllers
             }
             return View();
             
+        }
+
+        public ActionResult Update(int id)
+        {
+            EstoqueRepository repository = new EstoqueRepository();
+            EstoqueUpdateModel model = new EstoqueUpdateModel();
+                try
+                {
+                model = Mapper.Map<EstoqueUpdateModel>(repository.SelectById(id));
+                
+
+                
+                }
+                catch (Exception e)
+                {
+                    TempData["MensagemErro"] = e.Message;
+                }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Update(int id, EstoqueUpdateModel model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Estoque estoque = new Estoque();
+                    estoque.IdEstoque = id;
+                    estoque.Nome = model.Nome;
+                    EstoqueRepository repository = new EstoqueRepository();
+                    repository.Update(estoque);
+                    TempData["Mensagem"] = $"Estoque {estoque.Nome}, modificado com sucesso.";
+                    ModelState.Clear();
+                }
+                catch (Exception e)
+                {
+                    TempData["MensagemErro"] = e.Message;
+
+                }
+            }
+            return View(model);
         }
     }
 }
