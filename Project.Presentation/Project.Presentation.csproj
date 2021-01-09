@@ -218,6 +218,7 @@
     <Compile Include="Models\EstoqueDeleteModel.cs" />
     <Compile Include="Models\EstoqueUpdateModel.cs" />
     <Compile Include="Models\ProdutoCadastroModel.cs" />
+    <Compile Include="Models\ProdutoConsultaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
