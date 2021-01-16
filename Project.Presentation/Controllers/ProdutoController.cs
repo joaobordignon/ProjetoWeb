@@ -1,4 +1,5 @@
-﻿using Project.DAL.Entities;
+﻿using AutoMapper;
+using Project.DAL.Entities;
 using Project.DAL.Repositories;
 using Project.Presentation.Models;
 using System;
@@ -44,12 +45,8 @@ namespace Project.Presentation.Controllers
                 try
                 {
                     model.Estoques = GetRoles();                                 
-                    Produto produto = new Produto();
-                    produto.Nome = model.Nome;
-                    produto.Preco = model.Preco;
-                    produto.Quantidade = model.Quantidade;
-                    produto.IdEstoque = model.IdEstoque;
-                    
+                    Produto produto = Mapper.Map<Produto>(model);
+                                       
                     ProdutoRepository repository = new ProdutoRepository();
                     repository.Insert(produto);
                     
@@ -63,5 +60,6 @@ namespace Project.Presentation.Controllers
             }
             return Cadastro();
         }
+         
     }
 }
